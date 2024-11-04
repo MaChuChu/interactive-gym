@@ -4,11 +4,13 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { OrbitControls } from '@react-three/drei';
 
-// Define the props type for RotatingBox using Three.js types
-type RotatingBoxProps = JSX.IntrinsicElements['mesh'];
+// Define the props for RotatingBox, including the color prop
+interface RotatingBoxProps extends Omit<JSX.IntrinsicElements['mesh'], 'color'> {
+    color?: string;
+}
 
 // Create a rotating Box component
-function RotatingBox(props: RotatingBoxProps) {
+function RotatingBox({ color = 'orange', ...props }: RotatingBoxProps) {
     // Type the ref as a THREE.Mesh
     const meshRef = useRef<THREE.Mesh>(null!);
 
@@ -23,7 +25,7 @@ function RotatingBox(props: RotatingBoxProps) {
     return (
         <mesh ref={meshRef} {...props}>
             <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color="orange" />
+            <meshStandardMaterial color={color} />
         </mesh>
     );
 }
@@ -37,7 +39,9 @@ export default function ThreeScene() {
                 <OrbitControls />
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[5, 5, 5]} />
-                <RotatingBox position={[0, 0, 0]} />
+                <RotatingBox position={[0, 0, 0]} color="red" />
+                <RotatingBox position={[2, 0, 0]} color="blue" />
+                <RotatingBox position={[-2, 0, 0]} color="yellow" />
             </Canvas>
         </>
     );
