@@ -15,8 +15,8 @@ function RotatingBox(props: RotatingBoxProps) {
     // Rotate the box every frame
     useFrame(() => {
         if (meshRef.current) { // Check if meshRef is defined
-            meshRef.current.rotation.x += 0.01;
-            meshRef.current.rotation.y += 0.01;
+            meshRef.current.rotation.x += 0.001;
+            meshRef.current.rotation.y += 0.001;
         }
     });
 
@@ -31,11 +31,14 @@ function RotatingBox(props: RotatingBoxProps) {
 // Main Three.js scene component
 export default function ThreeScene() {
     return (
-        <Canvas>
-            <OrbitControls />
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[5, 5, 5]} />
-            <RotatingBox position={[0, 0, 0]} />
-        </Canvas>
+        <>
+            <h1>Interactive Gym</h1>
+            <Canvas>
+                <OrbitControls />
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[5, 5, 5]} />
+                <RotatingBox position={[0, 0, 0]} />
+            </Canvas>
+        </>
     );
 }
