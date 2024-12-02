@@ -1,17 +1,14 @@
-import type { NextConfig } from "next";
 
 const isProd = process.env.NODE_ENV === 'production';
 
-const nextConfig = {
+module.exports = {
   basePath: isProd ? '/interactive-gym' : '',
-  assetPrefix: isProd ? '/interactive-gym' : '',
+  assetPrefix: isProd ? '/interactive-gym/' : '',
   output: 'export',
   images: {
     unoptimized: true,
   },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProd ? '/interactive-gym' : '',
+  },
 };
-
-module.exports = nextConfig;
-
-
-export default nextConfig;
