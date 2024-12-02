@@ -4,7 +4,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { Bounds, OrbitControls, useGLTF } from '@react-three/drei';
 
-// Create a rotating Box component
+/* // Create a rotating Box component
 function RotatingBox({ color = 'orange', ...props }) {
     // Type the ref as a THREE.Mesh
     const meshRef = useRef<THREE.Mesh>(null!);
@@ -23,7 +23,7 @@ function RotatingBox({ color = 'orange', ...props }) {
             <meshStandardMaterial color={color} />
         </mesh>
     );
-}
+} */
 
 function HumanModel() {
     const { scene } = useGLTF('/Sculpt.glb'); // Load the model
