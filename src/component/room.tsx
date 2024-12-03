@@ -3,7 +3,10 @@ import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Bounds, OrbitControls, useGLTF } from '@react-three/drei';
 
-const modelPath = `/Sculpt.glb`;
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
+const { basePath } = publicRuntimeConfig;
+const modelPath = `${basePath}/Sculpt.glb`;
 
 function HumanModel() {
     const { scene } = useGLTF(modelPath);
