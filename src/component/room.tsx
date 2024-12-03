@@ -3,7 +3,7 @@ import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Bounds, OrbitControls, useGLTF } from '@react-three/drei';
 
-const modelPath = `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/Sculpt.glb`;
+const modelPath = `interactive-gym/Sculpt.glb`;
 
 function HumanModel() {
     const { scene } = useGLTF(modelPath);
