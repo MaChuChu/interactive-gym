@@ -6,9 +6,14 @@ Command: npx gltfjsx@6.5.3 human.glb
 */
 
 import { useGLTF } from '@react-three/drei'
+import { useEffect } from 'react';
 
 export default function Human(props) {
   const { nodes, materials } = useGLTF("/interactive-gym/human.glb")
+
+  useEffect(() => {
+    useGLTF("/interactive-gym/human.glb")
+  }, []);
 
   return (
     <group {...props} dispose={null}>
