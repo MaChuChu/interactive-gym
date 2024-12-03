@@ -8,10 +8,10 @@ Command: npx gltfjsx@6.5.3 human.glb
 import { useGLTF } from '@react-three/drei'
 
 export default function Human(props) {
-  const { nodes, materials } = useGLTF(`${process.env.NEXT_PUBLIC_BASE_PATH}/human.glb`)
+  const { nodes, materials } = useGLTF("/interactive-gym/human.glb")
 
   useEffect(() => {
-    useGLTF(`${process.env.NEXT_PUBLIC_BASE_PATH}/human.glb`)
+    useGLTF("/interactive-gym/human.glb")
   }, []);
 
   return (
