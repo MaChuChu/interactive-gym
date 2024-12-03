@@ -18,4 +18,4 @@ export default function Human(props) {
   )
 }
 
-useGLTF.preload('/human.glb')
+useGLTF.preload('interactive-gym/human.glb')
