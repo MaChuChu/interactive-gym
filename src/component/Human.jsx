@@ -10,10 +10,6 @@ import { useGLTF } from '@react-three/drei'
 export default function Human(props) {
   const { nodes, materials } = useGLTF("/interactive-gym/human.glb")
 
-  useEffect(() => {
-    useGLTF("/interactive-gym/human.glb")
-  }, []);
-
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Body.geometry} material={materials.Peau} position={[0, 1.685, 0]} rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
