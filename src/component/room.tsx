@@ -4,12 +4,17 @@ import { Canvas } from '@react-three/fiber';
 import { Bounds, OrbitControls, useGLTF } from '@react-three/drei';
 
 function HumanModel() {
-    const sculptGLBPath = process.env.NEXT_PUBLIC_SCULPT_GLB; // Dynamic path
+    const sculptGLBPath = process.env.NEXT_PUBLIC_SCULPT_GLB;
 
-    const { scene } = useGLTF(sculptGLBPath); // Load the model dynamically
+    if (!sculptGLBPath) {
+        throw new Error('NEXT_PUBLIC_SCULPT_GLB environment variable not set');
+    }
+
+    const { scene } = useGLTF(sculptGLBPath);
 
     return <primitive object={scene} scale={1.5} />;
 }
+
 // Main Three.js scene component
 export default function ThreeScene() {
     return (
