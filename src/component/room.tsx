@@ -1,15 +1,19 @@
 // ThreeScene.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Bounds, OrbitControls, useGLTF } from '@react-three/drei';
 
 import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
-const { basePath } = publicRuntimeConfig;
-const modelPath = `${basePath}/Sculpt.glb`;
 
 function HumanModel() {
-    const { scene } = useGLTF(modelPath);
+    const [basePath, setBasePath] = useState('');
+
+    useEffect(() => {
+        setBasePath(publicRuntimeConfig.basePath || '');
+    }, []);
+
+    const { scene } = useGLTF(`${basePath}/Sculpt.glb`);
 
     return <primitive object={scene} />;
 }
