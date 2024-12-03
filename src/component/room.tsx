@@ -1,28 +1,15 @@
 // ThreeScene.tsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Bounds, OrbitControls, useGLTF } from '@react-three/drei';
 
-import getConfig from 'next/config';
-const { publicRuntimeConfig } = getConfig();
-
 function HumanModel() {
-    const [basePath, setBasePath] = useState('');
+    const sculptGLBPath = process.env.NEXT_PUBLIC_SCULPT_GLB; // Dynamic path
 
-    useEffect(() => {
-        // Set the base path after component mounts (important for SSR environments)
-        setBasePath(publicRuntimeConfig.basePath || '');
-    }, []);
+    const { scene } = useGLTF(sculptGLBPath); // Load the model dynamically
 
-    // Make sure the path includes the basePath in production
-    const modelPath = `${basePath}/Sculpt.glb`;
-
-    // Use GLTF loader
-    const { scene } = useGLTF(modelPath);
-
-    return <primitive object={scene} />;
+    return <primitive object={scene} scale={1.5} />;
 }
-
 // Main Three.js scene component
 export default function ThreeScene() {
     return (

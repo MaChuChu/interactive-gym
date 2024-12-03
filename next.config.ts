@@ -1,6 +1,3 @@
-/** @type {import('next').NextConfig} */
-
-/* Conditional statement so build can work in production and locally. */
 const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
