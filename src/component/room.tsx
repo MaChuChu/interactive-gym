@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { Bounds, OrbitControls, useGLTF } from '@react-three/drei';
 
 function HumanModel() {
-    const sculptGLBPath = process.env.NEXT_PUBLIC_SCULPT_GLB || '/interactive-gym/Sculpt.glb'; // provide a default value
+    const sculptGLBPath = process.env.NEXT_PUBLIC_SCULPT_GLB || '/interactive-gym/sculpt.glb'; // provide a default value
     const { scene } = useGLTF(sculptGLBPath);
 
     return <primitive object={scene} scale={1.5} />;
