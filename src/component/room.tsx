@@ -10,10 +10,15 @@ function HumanModel() {
     const [basePath, setBasePath] = useState('');
 
     useEffect(() => {
+        // Set the base path after component mounts (important for SSR environments)
         setBasePath(publicRuntimeConfig.basePath || '');
     }, []);
 
-    const { scene } = useGLTF(`${basePath}/Sculpt.glb`);
+    // Make sure the path includes the basePath in production
+    const modelPath = `${basePath}/Sculpt.glb`;
+
+    // Use GLTF loader
+    const { scene } = useGLTF(modelPath);
 
     return <primitive object={scene} />;
 }
