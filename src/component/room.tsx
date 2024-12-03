@@ -1,12 +1,7 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Bounds, OrbitControls, useGLTF } from '@react-three/drei';
-
-function HumanModel() {
-    const { scene } = useGLTF('/interactive-gym/sculpt.glb');
-
-    return <primitive object={scene} scale={1.5} />;
-}
+import { Bounds, OrbitControls } from '@react-three/drei';
+import Human from "@/component/Human";
 
 export default function ThreeScene() {
     return (
@@ -17,7 +12,7 @@ export default function ThreeScene() {
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[5, 5, 5]} />
                 <Bounds fit clip observe>
-                    <HumanModel />
+                    <Human />
                 </Bounds>
                 <OrbitControls enableZoom={true} />
             </Canvas>

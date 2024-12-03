@@ -1,10 +1,7 @@
+import type { NextConfig } from 'next'
 
-const nextConfig = {
-  env: {
-    NEXT_PUBLIC_SCULPT_GLB: process.env.NODE_ENV === 'production'
-      ? '/interactive-gym/sculpt.glb' // production path
-      : '/interactive-gym/sculpt.glb', // local development path
-  },
-};
+const nextConfig: NextConfig = {
+  /* config options here */
+}
 
-export default nextConfig;
+export default nextConfig
