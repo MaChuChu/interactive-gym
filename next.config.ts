@@ -1,14 +1,18 @@
+/** @type {import('next').NextConfig} */
 
+/* Conditional statement so build can work in production and locally. */
 const isProd = process.env.NODE_ENV === 'production';
 
-module.exports = {
+const nextConfig = {
   basePath: isProd ? '/interactive-gym' : '',
-  assetPrefix: isProd ? '/interactive-gym/' : '',
+  assetPrefix: '/interactive-gym',
+  publicRuntimeConfig: {
+    basePath: '/interactive-gym',
+  },
   output: 'export',
   images: {
     unoptimized: true,
   },
-  env: {
-    NEXT_PUBLIC_BASE_PATH: isProd ? '/interactive-gym' : '',
-  },
 };
+
+export default nextConfig;
